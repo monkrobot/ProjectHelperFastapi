@@ -7,7 +7,7 @@ services:
     volumes:
       - ./postgresdata:/var/lib/postgresql/data
     env_file:
-      - ./fastapi_project_helper/envs/.env
+      - ./envs/.env
     ports:
       - 5555:5432
   app:
@@ -15,15 +15,16 @@ services:
       context: .
     container_name: project_helper_app
     volumes:
-      - ./fastapi_project_helper:/project_helper/app
+      - ./app:/project_helper/app
     env_file:
-      - ./fastapi_project_helper/envs/.env
+      - ./envs/.env
     depends_on:
       db:
         condition: service_started
+    command: bash -c "/project_helper/app/scripts/start.sh"
     ports:
       - 9000:8000
 
 volumes:
   postgresdata:
-  fastapi_project_helper:
+  app:
