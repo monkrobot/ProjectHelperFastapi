@@ -14,7 +14,8 @@ class Settings(BaseSettings):
         return (f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}"
                 f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}")
     
-    class Config: 
+    class Config:
+        # TODO: alembic don't like this path, use "./envs/.env"
         env_file = "../envs/.env"
 
 

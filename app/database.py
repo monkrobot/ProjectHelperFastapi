@@ -23,6 +23,14 @@ users_tasks_association_table = Table(
 )
 
 
+users_shoppings_association_table = Table(
+    "users_shoppings_association_table",
+    Base.metadata,
+    Column("user_id", ForeignKey("users.id"), primary_key=True),
+    Column("shopping_id", ForeignKey("shopping.id"), primary_key=True),
+)
+
+
 @event.listens_for(Mapper, "before_configured", once=True)
 def go():
     from app.users.models import Users

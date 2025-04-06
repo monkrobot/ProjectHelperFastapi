@@ -6,7 +6,7 @@ from sqlalchemy import UUID, Date, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
-from app.database import Base, users_tasks_association_table
+from app.database import Base, users_tasks_association_table, users_shoppings_association_table
 
 
 class Users(Base):
@@ -21,6 +21,11 @@ class Users(Base):
 
     tasks: Mapped[list["Tasks"]] = relationship(
         secondary=users_tasks_association_table,
+        back_populates="executors",
+    )
+
+    shoppings: Mapped[list["Shopping"]] = relationship(
+        secondary=users_shoppings_association_table,
         back_populates="executors",
     )
 
