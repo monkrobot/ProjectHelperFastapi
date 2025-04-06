@@ -1,10 +1,10 @@
+from sqlalchemy import Column, ForeignKey, Table, event
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, sessionmaker, Mapper
 
-from config import settings
+from app.config import settings
 
-DATABASE_URL = (f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASS}"
-                f"@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}")
+DATABASE_URL = settings.get_db_url()
 
 engine = create_async_engine(DATABASE_URL)
 
