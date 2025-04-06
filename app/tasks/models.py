@@ -6,7 +6,7 @@ from sqlalchemy import UUID, Date, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
-from app.database import Base, association_table
+from app.database import Base, users_tasks_association_table
 
 
 class Tasks(Base):
@@ -17,9 +17,14 @@ class Tasks(Base):
     description: Mapped[str] = mapped_column(String)
     creator_id: Mapped[uuid.UUID] = mapped_column(UUID, ForeignKey("users.id"))
 
-    executors: Mapped[list["Users"]] = relationship(secondary=association_table, back_populates="tasks")
+    executors: Mapped[list["Users"]] = relationship(
+        secondary=users_tasks_association_table,
+        back_populates="tasks",
+    )
 
-    created_date: Mapped[datetime] = mapped_column(Date, default=datetime.now(timezone('Europe/Moscow')))
+    created_date: Mapped[datetime] = mapped_column(
+        Date, default=datetime.now(timezone('Europe/Moscow'))
+    )
     finish_date: Mapped[date] = mapped_column(Date, nullable=True)
     status: Mapped[str] = mapped_column(String(30))
 
