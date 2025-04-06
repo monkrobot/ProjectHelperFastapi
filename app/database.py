@@ -15,8 +15,8 @@ class Base(DeclarativeBase):
     pass
 
 
-association_table = Table(
-    "association_table",
+users_tasks_association_table = Table(
+    "users_tasks_association_table",
     Base.metadata,
     Column("user_id", ForeignKey("users.id"), primary_key=True),
     Column("task_id", ForeignKey("tasks.id"), primary_key=True),
