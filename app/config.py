@@ -15,8 +15,8 @@ class Settings(BaseSettings):
                 f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}")
     
     class Config:
-        # TODO: alembic don't like this path, use "./envs/.env"
-        env_file = "../envs/.env"
+        # TODO: alembic doesn't like this path, use "./envs/.env"
+        env_file = "./envs/.env"
 
 
 settings = Settings()
