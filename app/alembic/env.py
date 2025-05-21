@@ -12,6 +12,7 @@ from alembic import context
 # sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from app.database import Base, DATABASE_URL
+from app.groups.models import Groups
 from app.shopping.models import Shopping
 from app.tasks.models import Tasks
 from app.users.models import Users
