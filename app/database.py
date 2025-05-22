@@ -39,8 +39,17 @@ users_friends_association_table = Table(
 )
 
 
+users_groups_association_table = Table(
+    "users_groups_association_table",
+    Base.metadata,
+    Column("user_id", ForeignKey("users.id"), primary_key=True),
+    Column("group_id", ForeignKey("groups.id"), primary_key=True),
+)
+
+
 @event.listens_for(Mapper, "before_configured", once=True)
 def go():
-    from app.users.models import Users
-    from app.tasks.models import Tasks
+    from app.groups.models import Groups
     from app.shopping.models import Shopping
+    from app.tasks.models import Tasks
+    from app.users.models import Users

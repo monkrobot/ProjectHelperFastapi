@@ -9,6 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database import (
     Base,
     users_friends_association_table,
+    users_groups_association_table,
     users_tasks_association_table,
     users_shoppings_association_table,
 )
@@ -48,6 +49,11 @@ class Users(Base):
     shoppings: Mapped[list["Shopping"]] = relationship(
         secondary=users_shoppings_association_table,
         back_populates="executors",
+    )
+
+    groups: Mapped[list["Groups"]] = relationship(
+        secondary=users_groups_association_table,
+        back_populates="users",
     )
 
     def __str__(self) -> str:
