@@ -10,3 +10,11 @@ class GroupInfo(BaseModel):
     creator_id: UUID
     users: list[UUID]
     created_date: date
+
+
+class UpdateGroupInfo(BaseModel):
+    name: str | None
+    description: str | None
+    creator_id: UUID | None
+    users: list[UUID] | None
+    updated_date: date

@@ -22,6 +22,7 @@ class Groups(Base):
         back_populates="groups",
     )
 
+    updated_date: Mapped[datetime] = mapped_column(Date, default=datetime.now(timezone('Europe/Moscow')))
     created_date: Mapped[datetime] = mapped_column(Date, default=datetime.now(timezone('Europe/Moscow')))
 
     def __str__(self) -> str:

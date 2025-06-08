@@ -3,12 +3,13 @@ from sqlalchemy import insert, select
 from app.dao.base import BaseDAO
 from app.database import async_session_maker, users_groups_association_table
 from app.groups.models import Groups
-from app.groups.schemas import GroupInfo
+from app.groups.schemas import GroupInfo, UpdateGroupInfo
 
 
 class GroupsDAO(BaseDAO):
     model = Groups
 
+    # ToDo: Created and updated date problem
     @classmethod
     async def create(cls, data: GroupInfo) -> UUID:
         async with async_session_maker() as session:
@@ -49,3 +50,8 @@ class GroupsDAO(BaseDAO):
             )
 
             return group_data
+
+
+    @classmethod
+    async def update_group_by_id(cls, group_id: UUID, data: UpdateGroupInfo):
+        return group_id
