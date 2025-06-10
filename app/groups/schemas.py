@@ -8,13 +8,16 @@ class GroupInfo(BaseModel):
     name: str
     description: str
     creator_id: UUID
-    users: list[UUID]
+    users: set[UUID]
+
+
+class CreateGroupInfo(GroupInfo):
     created_date: date
 
 
-class UpdateGroupInfo(BaseModel):
+# ToDo: Fix
+class UpdateGroupInfo(GroupInfo):
     name: str | None
     description: str | None
     creator_id: UUID | None
-    users: list[UUID] | None
-    updated_date: date
+    users: set[UUID] | None

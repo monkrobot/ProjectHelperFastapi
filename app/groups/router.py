@@ -2,7 +2,7 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from app.groups.dao import GroupsDAO
-from app.groups.schemas import GroupInfo
+from app.groups.schemas import GroupInfo, UpdateGroupInfo
 
 
 router = APIRouter(
@@ -22,5 +22,5 @@ async def create_group(group_info: GroupInfo) -> UUID:
 
 
 @router.post("/update_group/{id}")
-async def update_group(id: UUID, data) -> UUID:
-    return await GroupsDAO.update(id, data)
+async def update_group(id: UUID, data: UpdateGroupInfo) -> UUID:
+    return await GroupsDAO.update_group_by_id(id, data)
