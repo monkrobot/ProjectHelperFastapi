@@ -15,7 +15,6 @@ class CreateGroupInfo(GroupInfo):
     created_date: date
 
 
-# ToDo: Fix
 class UpdateGroupInfo(GroupInfo):
     name: str | None
     description: str | None
