@@ -16,6 +16,7 @@ pydantic-settings = "^2.4.0"
 alembic = "^1.13.2"
 pytz = "^2024.1"
 asyncpg = "^0.29.0"
+pre-commit = "^4.3.0"
 
 
 [build-system]

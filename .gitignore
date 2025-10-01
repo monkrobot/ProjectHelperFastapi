@@ -2,5 +2,6 @@
 .idea
 __pycache__
 envs
+venv
 
 poetry.lock
